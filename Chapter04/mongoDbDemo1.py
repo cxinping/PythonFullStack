@@ -44,7 +44,16 @@ for item in db.users.find({"age" : 25 }):
 '''
 for item in db.users.find().sort("age"):
     print(item)
-'''
+
 import pymongo
-for item in db.users.find().sort("age", pymongo.DESCENDING):
+for item in db.users.find().sort("age", pymongo.ASCENDING):
     print(item)
+'''
+
+# 更新文档
+#rs = db.users.update({'_id':ObjectId('5b3521a61ec3b71cb42b8ee5')},{'$set':{'name':'张三'}})
+#print(rs)
+
+# 删除文档
+#db.users.remove({'name':'张三'})
+db.users.remove()
