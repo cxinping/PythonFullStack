@@ -31,3 +31,6 @@ if len(apps)> 0:
 # 部署web应用	
 deploy(appName=webAppName,path = webAppPath,targets=targetServer)
 print('*** deploy web app Successfly ***')
+
+# 断开 WLST 与 WebLogic Server 实例的连接
+disconnect()
