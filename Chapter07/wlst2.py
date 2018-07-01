@@ -1,10 +1,7 @@
 # -*- coding:utf-8 -*-
-
-
 import re
-import sys
 
-ip = sys.argv[0]
+ip = '127.0.0.1'
 webAppName = r'web4'
 username = 'weblogic'
 password = 'weblogic0'
