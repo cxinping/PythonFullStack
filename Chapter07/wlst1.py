@@ -2,8 +2,11 @@
 
 import re
 
+# webLogic Server 用户
 username = 'weblogic'
+# webLogic Server 密码
 password = 'weblogic0'
+# URL 地址
 adminUrl = 't3://localhost:7001'
 # 连接到WebLogic Server实例
 connect(username,password,adminUrl)

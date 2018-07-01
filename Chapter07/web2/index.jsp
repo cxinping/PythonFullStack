@@ -7,5 +7,6 @@
 </head>
 <body>
 	<%= new java.util.Date() %>
+	<h1>from web2</>
 </body>
 </html>
