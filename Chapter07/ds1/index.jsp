@@ -6,38 +6,28 @@
 <%@page import="javax.sql.DataSource"%>
 <%@page import="javax.naming.InitialContext"%>
 <%@page import="javax.naming.Context"%>
-
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
 <!DOCTYPE HTML>
 <html>
   <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'index.jsp' starting page</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-  </head>
-  
-  <body>
-    This is my JSP page. <br>
+    <base href="<%=basePath%>">    
+    <title>jndi 例子</title>
+  </head>  
+  <body> 
     <%
+	    ///初始化上下文
     	Context ctx = new InitialContext();
+		// 查找JDNI数据源 jdbc/mysql
     	DataSource ds = (DataSource)ctx.lookup("jdbc/mysql");
+		// 从数据源中获得数据库连接句柄
     	Connection conn = ds.getConnection();
     	PreparedStatement ps = conn.prepareStatement("select count(*) from user");
     	ResultSet rs = ps.executeQuery();
     	if (rs.next()) {
-    		out.print("total:" + rs.getInt(1));
+    		out.print("学生记录总数为:" + rs.getInt(1));
     	}
     	conn.close();
     	ps.close();

@@ -1,4 +1,4 @@
-# Modify these values as necessary
+### WebLogic 数据源配置信息
 # weblogic的服务器地址
 url = 'localhost:7001'
 # 登录用户名
