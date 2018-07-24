@@ -7,13 +7,22 @@ db = pymysql.connect("127.0.0.1", "root", "123456", "mytestdb",charset='utf8')
 # 使用cursor()方法获取操作游标
 cursor = db.cursor()
 
-# SQL删除记录语句
-sql = "DELETE FROM EMPLOYEE WHERE AGE > '%d'" % (20)
+# SQL 查询语句
+sql = "SELECT * FROM EMPLOYEE \
+       WHERE INCOME > '%d'" % (1000)
 try:
-   # 执行SQL语句
-   cursor.execute(sql)
-   # 向数据库提交
-   db.commit()
-except:
-   # 发生错误时回滚
-   db.rollback()
+    # 执行SQL语句
+    cursor.execute(sql)
+    # 获取所有记录列表
+    results = cursor.fetchall()
+    for row in results:
+        fname = row[0]
+        lname = row[1]
+        age = row[2]
+        sex = row[3]
+        income = row[4]
+        # 打印结果
+        print("fname=%s,lname=%s,age=%d,sex=%s,income=%d" % \
+              (fname, lname, age, sex, income))
+except Exception as e:
+    print("Error: unable to fetch data", e)
