@@ -9,6 +9,6 @@ sdata1 = {'name' : ['王五1','王五2'], 'age' : [20, 21], 'sex':['female','mal
 df1 = pd.DataFrame(sdata1 )
 
 # 使用Pandas的to_sql方法将DataFrame对象直接入库
-df1.to_sql('employee', con=engine,index=False, if_exists='append')
+df1.to_sql('employee', con=engine, if_exists='append')
 
 
