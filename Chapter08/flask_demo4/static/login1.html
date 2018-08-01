@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <script src="jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <form name="loginForm" action="#" method="get">
+        用户名:<input type="text" id="username"><br/>
+        密码:<input type="password" id="password"><br/>
+        <button id="print_btn">输出信息到控制台</button>
+    </form>
+    <br/>
+
+    <script type="text/javascript">
+        print_btn = $('#print_btn')
+        print_btn.click( function () {
+            var username = $('#username').val()
+            var password = $('#password').val()
+            console.log('username:'+username)
+            console.log('password:'+password)
+        });
+    </script>
+</body>
+</html>
