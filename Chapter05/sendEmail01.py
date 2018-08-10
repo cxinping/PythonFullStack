@@ -12,7 +12,7 @@ mail_pass= "123welcome"                   #密码
 # 发送邮件地址
 sender = mail_user
 # 接收邮件地址
-receivers = ["xpws2013@163.com" ]
+receivers = ["xpws2006@163.com" ]
 
 # 三个参数：第一个为文本内容，第二个 plain 设置文本格式，第三个 utf-8 设置编码
 message = MIMEText("邮件发送测试。", "plain", "utf-8")
