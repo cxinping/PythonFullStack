@@ -4,19 +4,19 @@ from multiprocessing import Queue,Process
 import random,time
 
 #写数据进程执行的代码
-def wirteQueue(q):
+def wirteQueue(queue):
     print('写入队列开始')
     for i in range(5) :
         print("写入数据={0}".format(i))
-        q.put(str(i))
+        queue.put(str(i))
         time.sleep(random.random() * 5)
     print("写入队列结束")
 
 #读数据进程执行的代码
-def readQueue(q):
+def readQueue(queue):
     print('读取队列')
     while True:
-        print("读取队列的数据={0}".format(q.get()))
+        print("读取队列的数据={0}".format(queue.get()))
 
 if __name__ == '__main__':
     # 父进程创建Queue，并传给各个子进程
