@@ -25,7 +25,7 @@ if __name__ == '__main__':
     # 把两个Queue都注册到网络上, callable参数关联了Queue对象
     QueueManager.register('get_task_queue', callable=return_task_queue)
     QueueManager.register('get_result_queue', callable=return_result_queue)
-    # 绑定端口5000, 设置验证码'abc':
+    # 绑定端口5000, 设置验证码'abc'
     manager = QueueManager(address=('127.0.0.1', 5000), authkey=b'abc')
     # 启动Queue
     manager.start()
