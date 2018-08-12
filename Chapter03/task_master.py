@@ -38,11 +38,13 @@ if __name__ == '__main__':
     for i in range(10):
         n = random.randint(0, 10000)
         print('Put task %d' % n)
+        # 对task_queue进行写入数据，相当于分配任务
         task.put(n)
 
     # 从result队列读取结果:
-    print('Try get results..')
+    print('Try get results.')
     for i in range(10):
+        # 等待workers处理后返回的结果，响应过期时间为10秒
         r = result.get(timeout=10)
         print('Result:%s' % r)
 
