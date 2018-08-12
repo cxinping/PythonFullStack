@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 
-from multiprocessing import Queue
+from multiprocessing import Process, Queue
 
-qu = Queue()
-qu.put("java")
-qu.put("python")
-qu.put("C++")
+def putData(queue):
+    queue.put("java")
+    queue.put("python")
+    queue.put("c++")
 
-print(qu.get())
-print(qu.get())
-print(qu.get())
-
+if __name__ == '__main__':
+    queue = Queue() # 创建队列queue
+    process = Process(target=putData, args=(queue,)) # 创建一个进程
+    process.start()
+    print(queue.get())
+    print(queue.get())
+    print(queue.get())
+    process.join()
