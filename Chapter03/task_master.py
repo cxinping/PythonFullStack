@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
-import random,queue
+import random
 from multiprocessing.managers import BaseManager
+from multiprocessing import Queue
 
 # 发送任务的队列
-task_queue = queue.Queue()
+task_queue = Queue()
 # 接收结果的队列
-result_queue = queue.Queue()
+result_queue = Queue()
 
 def return_task_queue():
     global task_queue
@@ -21,7 +22,7 @@ class QueueManager(BaseManager):
     pass
 
 if __name__ == '__main__':
-    #把两个Queue都注册到网络上, callable参数关联了Queue对象
+    # 把两个Queue都注册到网络上, callable参数关联了Queue对象
     QueueManager.register('get_task_queue', callable=return_task_queue)
     QueueManager.register('get_result_queue', callable=return_result_queue)
     # 绑定端口5000, 设置验证码'abc':
