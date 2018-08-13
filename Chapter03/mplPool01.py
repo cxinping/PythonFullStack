@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
 from multiprocessing import Pool
 import os, time, random
 
@@ -15,12 +14,10 @@ def worker(msg):
 if __name__ == '__main__':
     print('⽗进程 %d.' % os.getpid())
     pool = Pool(3)  # 定义⼀个进程池， 最⼤进程数3
-    for i in range(0, 10):
+    for i in range(0, 5):
         # Pool.apply_async(要调⽤的⽬标,(传递给⽬标的参数元祖,))
         # 每次循环将会⽤空闲出来的⼦进程去调⽤⽬标
         pool.apply_async(worker, (i,))
 
     pool.close()  # 关闭进程池， 关闭后po不再接收新的请求
     pool.join()  # 等待po中所有⼦进程执⾏完成， 必须放在close语句之后
-
-
