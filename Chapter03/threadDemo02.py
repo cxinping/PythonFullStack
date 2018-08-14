@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import threading
+import time,random,math
 
 class MutliThread(threading.Thread):
 
@@ -12,6 +13,8 @@ class MutliThread(threading.Thread):
     def run(self):
         for i in range(self.num):
             print("{0} i={1}".format(threading.current_thread().getName(), i))
+            delay = math.ceil(random.random() * 2)
+            time.sleep(delay)
 
 if __name__ == '__main__':
     thr1 = MutliThread("thread1",3)
