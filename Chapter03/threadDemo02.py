@@ -16,10 +16,10 @@ class MutliThread(threading.Thread):
 if __name__ == '__main__':
     thr1 = MutliThread("thread1",3)
     thr2 = MutliThread("thread2",2)
-    #启动线程
+    # 启动线程
     thr1.start()
     thr2.start()
-
+    # 等待至线程中止
     thr1.join()
     thr2.join()
     print("{0} 线程结束".format(threading.current_thread().getName()))
