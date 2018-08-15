@@ -1,39 +1,24 @@
 # -*- coding: utf-8 -*-
 
 import threading
+import time,random,math
 
-v1 = 0  # 全局变量
-v2 = threading.local()# 本地线程变量——全局变量
+# 本地线程变量——全局变量
+local = threading.local()
 
-def f1():
-    global v1
-    v3 = 100
-    for i in range(100):
-        v1 += 1
-        print('threadName: %s\tv1 = %d' %
-(threading.current_thread().getName(), v1))
-
-def f2():
-    global v1
-    v3 = 100
-    v2.v1 = 0
-    for i in range(100):
-        v2.v1 += 1
-        print('threadName: %s\tv1 = %d' %
-(threading.current_thread().getName(), v2.v1))
+def loop():
+    local.num = 0
+    for i in range(5):
+        local.num += 1
+        print('threadName=%s num=%d' % (threading.current_thread().getName(), local.num))
+        delay = math.ceil(random.random() * 2)
+        time.sleep(delay)
 
 if __name__ == '__main__':
-    # f1()
-    # print(v1)
-    # print(v2)       # v2可访问，即全局变量
-    # print(v3)     # 报错，局部变量
-
-    t1 = threading.Thread(target=f1, args=(), name='t1')
-    t2 = threading.Thread(target=f2, args=(), name='t2')
-
-    t1.start()
-    t2.start()
-    t1.join()
-    t2.join()
-
+    thr1 = threading.Thread(target=loop, args=(), name='t1')
+    thr2 = threading.Thread(target=loop, args=(), name='t2')
+    thr1.start()
+    thr2.start()
+    thr1.join()
+    thr2.join()
     print('===end===')
