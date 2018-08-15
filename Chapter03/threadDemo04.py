@@ -8,9 +8,11 @@ lock = threading.Lock()
 def change(num, counter):
     global balance
     for i in range(counter):
+        # 先要获取锁
         lock.acquire()
         balance += num
         balance -= num
+        # 释放锁
         lock.release()
         
         if balance != 100:
