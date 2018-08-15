@@ -8,9 +8,11 @@ lock = threading.Lock()
 def change(num, counter):
     global balance
     for i in range(counter):
+        lock.acquire()
         balance += num
         balance -= num
-
+        lock.release()
+        
         if balance != 100:
             # 如果输出这句话，说明线程不安全
             print("balance=%d" % balance)
