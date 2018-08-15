@@ -11,7 +11,8 @@ def change(num, counter):
         balance -= num
         if balance != 100:
             # 如果输出这句话，说明线程不安全
-            print("v1=%d" % balance)
+            print("balance=%d" % balance)
+            break
 
 if __name__ == "__main__":
     thr1 = threading.Thread(target=change,args=(100,500000),name='t1')
