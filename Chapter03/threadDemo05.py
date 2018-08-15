@@ -8,10 +8,10 @@ local = threading.local()
 
 def loop():
     local.num = 0
-    for i in range(5):
+    for i in range(3):
         local.num += 1
         print('threadName=%s num=%d' % (threading.current_thread().getName(), local.num))
-        delay = math.ceil(random.random() * 2)
+        delay = math.ceil(random.random() * 3)
         time.sleep(delay)
 
 if __name__ == '__main__':
@@ -21,4 +21,4 @@ if __name__ == '__main__':
     thr2.start()
     thr1.join()
     thr2.join()
-    print('===end===')
+    print('=== main end===')
