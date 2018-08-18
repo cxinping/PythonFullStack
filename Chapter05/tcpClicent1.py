@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from socket import socket
+import socket
 
-socket1 = socket()
+socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 port = 12345
 
 socket.connect(("127.0.0.1", port))
