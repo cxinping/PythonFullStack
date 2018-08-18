@@ -17,11 +17,12 @@ print('start Socket Server ...')
 while True:
     # 建立客户端连接
     clientSocket,addr  = serversocket.accept()
-    print("新连接:",addr )
+    #print("新连接:",addr )
     msg = 'socket message'
 
     clientSocket.send(msg.encode('utf'))
     clientSocket.close()
 
+# 关闭连接
 serversocket.close()
 
