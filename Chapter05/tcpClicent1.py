@@ -6,6 +6,7 @@ import socket
 socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # 设置端口号
 port = 12345
+
 # 连接服务，指定主机和端口
 socket.connect(("127.0.0.1", port))
 print('start Socket client ...')

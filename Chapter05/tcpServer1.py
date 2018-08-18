@@ -18,7 +18,7 @@ while True:
     # 建立客户端连接
     clientSocket,addr  = serversocket.accept()
     #print("新连接:",addr )
-    msg = 'socket message'
+    msg = '成功连接到服务器 socket message'
 
     clientSocket.send(msg.encode('utf'))
     clientSocket.close()
