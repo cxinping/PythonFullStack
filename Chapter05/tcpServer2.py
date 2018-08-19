@@ -23,6 +23,7 @@ while True:
         client_data = tcpCliSock.recv(1024).decode("utf8")
         print("服务器端接收消息: ", client_data)
 
+        # 如果客户端输入空格或quit，就退出循环，释放掉客户端连接
         if not client_data or client_data == 'quit' :
             break
 
