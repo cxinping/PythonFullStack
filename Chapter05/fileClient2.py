@@ -6,9 +6,12 @@ import sys
 
 cSocket = socket.socket()
 cSocket.connect(('127.0.0.1', 5000))
-content = cSocket.recv(1024 * 1024 * 5)  #配置5M缓存
-with open('photo3.jpg', 'wb') as file:
-    file.write(content)
+
+serverResponse =  cSocket.recv(1024).decode('utf8')
+fileTotalSize = int(serverResponse)
+print(fileTotalSize,type(fileTotalSize))
+#with open('photo3.jpg', 'wb') as file:
+#    file.write(content)
 
 print('===recv file ok===')
 
