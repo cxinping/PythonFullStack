@@ -22,8 +22,10 @@ while True:
         # 接收客户端数据
         client_data = tcpCliSock.recv(1024).decode("utf8")
         print("服务器端接收消息: ", client_data)
-        if not client_data:
+
+        if not client_data or client_data == 'quit' :
             break
+
         msg = "服务器当前时间={0}".format(time.ctime())
         tcpCliSock.send(msg.encode("utf8"))
 
