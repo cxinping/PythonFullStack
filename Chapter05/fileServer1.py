@@ -10,6 +10,6 @@ while True:
     cSocket, addr = sSocket.accept()
     with open('photo.jpg', 'rb') as file:
         content = file.read()
-    cSocket.send(content)
+        cSocket.send(content)
     print('===send file ok===')
 
