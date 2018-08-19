@@ -9,6 +9,7 @@ sSocket.listen(10)
 while True:
     cSocket, addr = sSocket.accept()
     with open('photo.jpg', 'rb') as file:
+        # 一次性读取整个文件
         content = file.read()
         cSocket.send(content)
     print('===send file ok===')

@@ -2,7 +2,6 @@
 
 import socket
 import os
-import sys
 
 cSocket = socket.socket()
 cSocket.connect(('127.0.0.1', 5000))
