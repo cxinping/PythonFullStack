@@ -17,7 +17,6 @@ while True:
     if not data :
         break
     tcpCliSock.send(data.encode("utf8"))
-
     client_data = tcpCliSock.recv(1024)
     if not client_data:
         break
