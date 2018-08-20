@@ -18,8 +18,8 @@ fileName = 'photo3.jpg'
 with open(fileName, 'wb') as file:
     # Step3： 判断是否已经接收完文件，对接收文件大小和接收文件总大小进行比较
     while revivedSize < fileTotalSize:
-        # 配置1M缓存
-        data = cSocket.recv(1024 * 1024)
+        # 配置5KB 缓存
+        data = cSocket.recv(1024 * 50)
         # 接收文件大小
         revivedSize = revivedSize + len(data)
         #print("revivedSize={0},data={1}".format(revivedSize,len(data)) )
