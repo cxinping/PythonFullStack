@@ -3,7 +3,7 @@
 import socket
 import os
 
-cSocket = socket.socket()
+cSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 cSocket.connect(('127.0.0.1', 5000))
 
 # Step1： 获得接收文件的大小
