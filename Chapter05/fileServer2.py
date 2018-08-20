@@ -17,7 +17,7 @@ while True:
         cSocket.send(str(fileSize).encode("utf8"))
         # Step3: 等待客户端确认
         data = cSocket.recv(1024).decode("utf8")
-        # Step4: 边读文件边发送数据
+        # Step4: 通过文件迭代器遍历文件，边读文件边发送数据
         for line in file:
             cSocket.send(line)
             print("send data length=>{0}".format(len(line)))
