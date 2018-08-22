@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import socket
-import threading        # 使用多线程
+import threading        # 使用多线程模块
 
 def main():
     # 创建socket对象。调用socket构造函数
@@ -33,8 +33,4 @@ def recvMsg(cSocket,addr):
         cSocket.send(msg_bytes)
 
 if __name__ == '__main__':
-    #t1 = threading.Thread(target=recvMsg, args=(), name='recv_thread')
-    #t2 = threading.Thread(target=sendMsg, args=(), name='send_thread')
-    #t1.start()
-    #t2.start()
     main()

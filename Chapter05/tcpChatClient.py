@@ -6,7 +6,7 @@ import os
 import sys
 import time
 
-cSocket = socket.socket()
+cSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 cSocket.connect(('127.0.0.1', 5000))
 msg = ' '
 running = True
