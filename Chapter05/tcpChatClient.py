@@ -15,7 +15,6 @@ def recvMsg():
     global running
 
     while running:
-        print("***** running=[{0}]".format(running) )
         msg_bytes = cSocket.recv(1024)
         msg = msg_bytes.decode('utf8')
         print('\n从服务器端接收的消息: {0}\n'.format(msg) )
