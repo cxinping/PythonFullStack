@@ -2,8 +2,6 @@
 
 import threading
 import socket
-import os
-import sys
 import time
 
 cSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
