@@ -3,7 +3,6 @@
 import threading
 import time
 
-
 class TestThread(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
@@ -15,8 +14,9 @@ class TestThread(threading.Thread):
 
     def run(self):
         count = 1
+        thredName = threading.current_thread().getName()
         while self._running:
-            print("threadName={0},count={1}".format(threading.current_thread().getName(),count))
+            print("threadName={0},count={1}".format(thredName,count))
             count = count + 1
             time.sleep(1)  # 暂停一秒钟
 
