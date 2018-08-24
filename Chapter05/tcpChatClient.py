@@ -31,7 +31,7 @@ def sendMsg():
             break
 
 if __name__ == '__main__':
-    t1 = threading.Thread(target=recvMsg, args=(), name='recv_thread')
-    t2 = threading.Thread(target=sendMsg, args=(), name='send_thread')
-    t1.start()
-    t2.start()
+    thr1 = threading.Thread(target=recvMsg, args=(), name='recv_thread')
+    thr2 = threading.Thread(target=sendMsg, args=(), name='send_thread')
+    thr1.start()
+    thr2.start()
