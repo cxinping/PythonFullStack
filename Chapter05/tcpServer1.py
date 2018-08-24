@@ -2,7 +2,7 @@
 
 import socket
 
-# 创建 socket 对象
+# 创建一个服务器端的 socket 对象
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # 设置端口号
 port = 12345
