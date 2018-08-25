@@ -20,7 +20,7 @@ while True:
     #print("新连接:",addr )
     msg = '成功连接到服务器 socket message'
 
-    clientSocket.send(msg.encode('utf'))
+    clientSocket.send(msg.encode('utf8'))
     clientSocket.close()
 
 # 关闭连接

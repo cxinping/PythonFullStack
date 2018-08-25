@@ -12,7 +12,7 @@ socket.connect(("127.0.0.1", port))
 print('start Socket client ...')
 
 # 接收消息，接收小于 1024 字节的数据
-msg = socket.recv(1014).decode('utf-8')
+msg = socket.recv(1014).decode('utf8')
 print("client receive message={0}".format(msg))
 
 # 关闭连接
