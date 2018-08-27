@@ -12,6 +12,7 @@ file = open('photo.jpg', 'rb' )
 # 以二进制格式打开一个文件只用于写入
 file2 = open("photo2.jpg", "wb")
 
+#  判断是否已经读取完文件，对读取文件大小和文件总大小进行比较
 while readSize < fileTotalSize:
     #每次读取50K的文件内容
     content = file.read(1024 * 50)
