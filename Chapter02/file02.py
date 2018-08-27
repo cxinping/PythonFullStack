@@ -3,7 +3,7 @@ import os
 
 # 获得复制文件的大小
 fileTotalSize = os.stat('photo.jpg').st_size
-print("fileTotalSize={0}".format(fileTotalSize))
+#print("fileTotalSize={0}".format(fileTotalSize))
 # 读取文件大小
 readSize = 0
 
@@ -18,6 +18,8 @@ while readSize < fileTotalSize:
     content = file.read(1024 * 50)
     readSize = readSize + len(content)
     file2.write(content)
+else:
+    print("fileTotalSize={0},readSize={1}".format(fileTotalSize, readSize))
 
 # 关闭文件资源
 file.close()
