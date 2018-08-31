@@ -11,6 +11,6 @@ def odd(max):
         if count == max:
             raise StopIteration
 
-odd_num = odd(3) #拿到一个生成器
+odd_num = odd(3) # 得到一个生成器
 for num in odd_num:
     print(num)
