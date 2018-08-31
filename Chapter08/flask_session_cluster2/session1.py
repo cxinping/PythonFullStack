@@ -15,7 +15,7 @@ Session(app)
 def index():
     sessionId = request.cookies.get('session')
     username = session['username']
-    return '<br/>sessionId={0}<br/> username={1}, webserver2'.format(sessionId, username)
+    return '<br/>sessionId={0}<br/> username={1}, webserver1'.format(sessionId,username)
 
 @app.route("/login", methods=['POST'])
 def login():
@@ -24,6 +24,4 @@ def login():
 
 if __name__ == '__main__':
     app.debug = True
-    app.run(host='0.0.0.0', port=8082)
-
-# .htmlhttp://127.0.0.1:8082/index
+    app.run(host='0.0.0.0', port=8081)
