@@ -1,0 +1,14 @@
+CREATE DATABASE mytestdb character set utf8 ;
+
+USE mytestdb;
+
+DROP TABLE IF EXISTS `cpu`;
+
+CREATE TABLE cpu (
+	id INTEGER PRIMARY KEY AUTO_INCREMENT, 
+	insert_time text,
+	cpu1 float, 
+	cpu2 float, 
+	cpu3 float, 
+	cpu4 float
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
