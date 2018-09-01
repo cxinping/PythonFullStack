@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jslib/echarts.min.js"></script>
+</head>
+<body>
+
+<button id="showChart_btn" onclick="showChart()">show chart</button>
+<div id="chart_div" style="width:800px;height:600px;" ></div>
+
+<script type="text/javascript">
+
+    function showChart(){
+         var chart = echarts.init(document.getElementById("chart_div"));
+         option = {
+            tooltip : {
+                formatter: "{a} <br/>{b} : {c}%"
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    mark : {show: true},
+                    restore : {show: true},
+                    saveAsImage : {show: true}
+                }
+            },
+            series : [
+                {
+                    name:'业务指标',
+                    type:'gauge',
+                    detail : {formatter:'{value}%'},
+                    data:[{value: 50, name: '完成率'}]
+                }
+            ]
+        };
+
+        //clearInterval(timeTicket);
+        timeTicket = setInterval(function (){
+            option.series[0].data[0].value = (Math.random()*100).toFixed(2) - 0;
+            chart.setOption(option, true);
+        },2000);
+
+        chart.setOption(option);
+    }
+
+</script>
+
+</body>
+</html>

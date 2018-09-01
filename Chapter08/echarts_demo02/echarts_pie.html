@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jslib/echarts.min.js"></script>
+</head>
+<body>
+
+<button id="showChart_btn" onclick="showChart()">show chart</button>
+<div id="chart_div" style="width:800px;height:600px;" ></div>
+
+<script type="text/javascript">
+
+    function showChart(){
+          var chart = echarts.init(document.getElementById("chart_div"));
+          var option = {
+            title : {
+                text: '编程语言使用百分比',
+                subtext: '来自网络',
+                x:'center'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient : 'vertical',
+                x : 'left',
+                data:['python','java','c#','php','c++']
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    mark : {show: true},
+                    dataView : {show: true, readOnly: false},
+                    magicType : {
+                        show: true,
+                        type: ['pie', 'funnel'],
+                        option: {
+                            funnel: {
+                                x: '25%',
+                                width: '50%',
+                                funnelAlign: 'left',
+                                max: 1548
+                            }
+                        }
+                    },
+                    restore : {show: true},
+                    saveAsImage : {show: true}
+                }
+            },
+            calculable : true,
+            series : [
+                {
+                    name:'访问来源',
+                    type:'pie',
+                    radius : '55%',
+                    center: ['50%', '60%'],
+                    //传递json格式的数组
+                    data:[
+                        {value:3350, name:'python'},
+                        {value:310, name:'java'},
+                        {value:234, name:'c#'},
+                        {value:135, name:'php'},
+                        {value:1548, name:'c++'}
+                    ]
+                }
+            ]
+        };
+
+        chart.setOption(option);
+    }
+
+</script>
+
+</body>
+</html>
