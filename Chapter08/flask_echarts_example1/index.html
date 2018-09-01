@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>ECharts3 Ajax</title>
+    <script src="jslib/echarts.min.js"></script>
+    <script src="jslib/jquery-1.11.1.js"></script>
+</head>
+
+<body>
+    <!--为ECharts准备一个具备大小（宽高）的Dom-->
+    <div id="main" style="height:500px;border:1px solid #ccc;padding:10px;"></div>
+
+    <script type="text/javascript">
+    //--- 折柱 ---
+    var myChart = echarts.init(document.getElementById('main'));
+
+    myChart.setOption({
+        title: {
+            text: '服务器系统监控'
+        },
+        tooltip: {},
+        legend: {
+            data:['cpu1','cpu2','cpu3','cpu4']
+        },
+        xAxis: {
+            data: []
+        },
+        yAxis: {},
+        series: [{
+            name: 'cpu1',
+            type: 'line',
+            data: []
+        },{
+            name: 'cpu2',
+            type: 'line',
+            data: []
+        },{
+            name: 'cpu3',
+            type: 'line',
+            data: []
+        },{
+            name: 'cpu4',
+            type: 'line',
+            data: []
+        }]
+    });
+
+
+    // 六个全局变量：插入时间、cpu1、cpu2、cpu3、cpu4、 哨兵（用于POST）
+    var insert_time = ["","","","","",""],
+        cpu1 = [0,0,0,0,0,0],
+        cpu2 = [0,0,0,0,0,0],
+        cpu3 = [0,0,0,0,0,0],
+        cpu4 = [0,0,0,0,0,0],
+
+        lastID = 0; // 哨兵，记录上次数据表中的最后id +1（下次查询只要>=lastID）
+
+
+    //准备好统一的 callback 函数
+    var update_mychart = function (data) { //data是json格式的response对象
+
+        myChart.hideLoading(); // 隐藏加载动画
+
+        dataLength = data.insert_time.length; //取回的数据长度
+        console.log("dataLength="+dataLength + ",data="+ JSON.stringify(data) )
+        lastID += dataLength; //哨兵，相应增加。
+
+        // 切片是能统一的关键！！
+        insert_time = insert_time.slice(dataLength).concat(data.insert_time); // 数组，先切片、再拼接
+        cpu1 = cpu1.slice(dataLength).concat(data.cpu1.map(parseFloat)); //注意map方法
+        cpu2 = cpu2.slice(dataLength).concat(data.cpu2.map(parseFloat));
+        cpu3 = cpu3.slice(dataLength).concat(data.cpu3.map(parseFloat));
+        cpu4 = cpu4.slice(dataLength).concat(data.cpu4.map(parseFloat));
+
+        // 填入数据
+        myChart.setOption({
+            xAxis: {
+                data: insert_time
+            },
+            series: [{
+                name: 'cpu1', // 根据名字对应到相应的系列
+                data: cpu1
+            },{
+                name: 'cpu2',
+                data: cpu2
+            },{
+                name: 'cpu3',
+                data: cpu3
+            },{
+                name: 'cpu4',
+                data: cpu4
+            }]
+        });
+
+        if (dataLength == 0){clearInterval(timeTicket);} //如果取回的数据长度为0,停止ajax
+    }
+
+    myChart.showLoading(); // 首次显示加载动画
+
+
+    // 异步加载数据 （首次，get，显示4个数据）
+    $.get('/cpu').done(update_mychart);
+
+    // 异步更新数据 （以后，定时post，取回1个数据）
+    var timeTicket = setInterval(function () {
+        $.post('/cpu',{id: lastID}).done(update_mychart);
+    }, 3000);
+
+    </script>
+</body>
+</html>
