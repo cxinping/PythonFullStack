@@ -2,7 +2,8 @@
 
 import pymysql
 # 打开数据库连接
-db = pymysql.connect("127.0.0.1", "root", "123456", "mytestdb",charset='utf8')
+db = pymysql.connect(host="127.0.0.1", user="root", password="123456",
+                     database="mytestdb", port=3306, charset="utf8")
 
 # 使用cursor()方法获取操作游标
 cursor = db.cursor()
