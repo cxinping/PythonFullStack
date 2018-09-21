@@ -10,7 +10,7 @@ cursor = db.cursor()
 
 # SQL 查询语句
 sql = "SELECT * FROM EMPLOYEE \
-       WHERE INCOME > '%d'" % (1000)
+       WHERE INCOME > '%d'" % (2000)
 try:
     # 执行SQL语句
     cursor.execute(sql)
