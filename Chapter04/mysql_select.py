@@ -17,13 +17,16 @@ try:
     # 获取所有记录列表
     results = cursor.fetchall()
     for row in results:
-        fname = row[0]
-        lname = row[1]
+        id = row[0]
+        name = row[1]
         age = row[2]
         sex = row[3]
         income = row[4]
         # 打印结果
-        print("fname=%s,lname=%s,age=%d,sex=%s,income=%d" % \
-              (fname, lname, age, sex, income))
+        print("id=%s,name=%s,age=%d,sex=%s,income=%d" % \
+              (id, name, age, sex, income))
 except Exception as e:
-    print("Error: unable to fetch data", e)
+    print(e)
+finally:
+    # 关闭数据库连接
+    db.close()
