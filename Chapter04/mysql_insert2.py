@@ -10,17 +10,21 @@ db = pymysql.connect(host="127.0.0.1", user="root", password="123456",
 cursor = db.cursor()
 
 # SQL 插入语句
-sql = "INSERT INTO employee(name, age,sex, income) VALUES( '王五1' ,25,'F' , 5000 )"
-
+sql = "INSERT INTO EMPLOYEE(NAME,  \
+          AGE, SEX, INCOME)  \
+         VALUES ('%s',  '%d', '%s', '%d')" % \
+      ('张三2',  21, 'F', 2000)
 try:
     # 执行sql语句
     cursor.execute(sql)
     # 提交到数据库执行
     db.commit()
 except Exception as e:
+    print( e )
     # 如果发生错误则回滚
-    print(e)
     db.rollback()
+
 finally:
     # 关闭数据库连接
     db.close()
+
