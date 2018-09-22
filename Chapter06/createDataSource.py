@@ -30,7 +30,7 @@ try:
 except WLSTException:
 	pass
 
-print 'Creating new JDBC Data Source named ' + dsName + '.'
+print( 'Creating new JDBC Data Source named ' + dsName + '.' )
 
 edit()
 startEdit()
@@ -71,7 +71,7 @@ jdbcSystemResource.addTarget(targetServer)
 save()
 # 激活在当前编辑会话期间已保存但尚未部署的更改。
 activate(block='true')
-print 'Data Source created successfully.'
+print( 'Data Source created successfully.')
 exit()
 
 
