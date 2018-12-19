@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from flask import Flask
 from flask import request       # 接收数据
 
@@ -14,18 +12,21 @@ def register_get():
         password = request.args.get('password')  # 返回index中输入的password
         password2 = request.args['password2']
         print("username={0},password={1},password2={2}".format(username , password, password2))
+
         # 输入密码要和确认密码一样，输入密码要大于等于3
         if password and len(password) >= 3 and password == password2:
             print('注册成功')
         else:
             print('失败')
+            return '注册失败，输入密码要和确认密码一样，输入密码要大于等于3'
 
         # 姓名长度不能小于3
         if len(username) < 3:
-            print("注册失败,注册用户名长度不能小于3")
+            print('注册失败,注册用户名长度不能小于3')
+            return '注册失败,注册用户名长度不能小于3'
         else:
             print('注册成功')
-    return 'ok'
+    return '注册成功'
 
 if __name__ == '__main__':
     app.debug = True
