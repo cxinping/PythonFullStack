@@ -28,6 +28,15 @@ def register_get():
             print('注册成功')
     return '注册成功'
 
+@app.route('/register_post', methods=['POST'])
+def register_post():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    password2 = request.form.get('password2')
+    print("username={0},password={1},password2={2}".format(username , password, password2))
+
+    return 'ok'
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0', port=80)
