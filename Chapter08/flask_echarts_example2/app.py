@@ -12,14 +12,18 @@ def index():
 
 @app.route('/getdata', methods=['GET', 'POST'])
 def getdata():
+
+    # 生成手机销量的虚拟数据
     data = {
-        '华为':math.ceil(random.random() * 100),
-        '小米':math.ceil(random.random() * 100),
+        '华为': math.ceil(random.random() * 100),
+        '小米': math.ceil(random.random() * 100),
         'oppo': math.ceil(random.random() * 100)
         }
-    msg_dict = {'msg': data}
+    msg_dict = {'msg': data }
     msg_jsonstr = json.dumps(msg_dict)
     return msg_jsonstr
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
+
+# http://127.0.0.1/index.html

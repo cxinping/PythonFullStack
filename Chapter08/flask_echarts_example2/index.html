@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="jslib/jquery-3.1.1.min.js"></script>
-<script src="jslib/echarts.min.js"></script>
+    <script src="jslib/jquery-3.3.1.min.js"></script>
+    <script src="jslib/echarts.min.js"></script>
 </head>
 <body>
     <div id="chart_div" style="width: 800px; height: 600px;"></div>
 </body>
     <script type="text/javascript">
-         // alert('echarts');
+
        data2=[]
        data=[]
        var chart = echarts.init(document.getElementById("chart_div"));
        var options = {
             title : {
-                text: '华为 小米 oppo手机08年一月份销量',
+                text: '虚构的华为，小米和OPPO手机在2018年一月份的销量统计',
                 subtext: '2018年最新数据',
                 x:'center'
             },
@@ -27,7 +27,7 @@
             legend: {
                 orient: 'vertical',
                 left: 'left',
-                data:data2
+                data: data2
             },
             series : [
                 {
@@ -49,8 +49,6 @@
 
        timeTicket1 = setInterval(function () {
             $.get('/getdata').done(changData);
-           //options.series[0].data.value = data;
-
        },3000);
         function changData(result) {
             var data3 = JSON.parse(result).msg;
@@ -61,11 +59,11 @@
             ]
            options.series[0].data = data;
             for (var i=0;i<data.length;i++){
-            data2[i]=data[i]["name"]
+                  data2[i]=data[i]["name"]
              }
-           //console.log(data)
-           chart.setOption(options);
 
+           chart.setOption(options);
         }
+
     </script>
 </html>
