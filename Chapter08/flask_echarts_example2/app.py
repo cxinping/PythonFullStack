@@ -12,14 +12,14 @@ def index():
 
 @app.route('/getdata', methods=['GET', 'POST'])
 def getdata():
-
-    # 生成手机销量的虚拟数据
+    # 生成三个厂商的手机销量数据，数据类型是字典
     data = {
         '华为': math.ceil(random.random() * 100),
         '小米': math.ceil(random.random() * 100),
         'oppo': math.ceil(random.random() * 100)
-        }
+    }
     msg_dict = {'msg': data }
+    # 转换数据，从字典类型转换为字符串
     msg_jsonstr = json.dumps(msg_dict)
     return msg_jsonstr
 
