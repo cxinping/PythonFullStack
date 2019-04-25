@@ -1,6 +1,6 @@
 # 《Python 3 全栈开发从入门到精通》
 
-![](http://5b0988e595225.cdn.sohucs.com/images/20180421/05c175e5a87f4661bf36993092749261.jpeg)
+![](http://images.cnblogs.com/cnblogs_com/wangshuo1/921455/o_%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190425165235.jpg)
 
 为什么要编写本书？
 =========
